@@ -1,31 +1,27 @@
 // Import the ORM to create functions that will interact with the database.
 var orm = require("../config/orm.js");
 
-var burgerRepo = orm("burgers");
-
 var burger = {
   all: function(cb) {
-    burgerRepo.findAll(function(res) {
+    orm.all("burgers", function(res) {
       cb(res);
     });
   },
-  // The variables cols and vals are arrays.
-  create: function(newRow, cb) {
-    burgerRepo.create(newRow, function(res) {
-      cb(res);
-    });
+  create: function(name, cb) {
+    orm.create("burgers", [
+      "burger_name", "devoured"
+    ], [
+      name, false
+    ], cb);
   },
-  update: function(updatedRow, condition, cb) {
-    burgerRepo.update(updatedRow, condition, function(res) {
-      cb(res);
-    });
-  },
-  delete: function(condition, cb) {
-    burgerRepo.delete(condition, function(res) {
-      cb(res);
-    });
+  update: function(id, cb) {
+    var condition = "id=" + id;
+    orm.update("burgers", {
+      devoured: true
+    }, condition, cb);
   }
 };
+
 
 // Export the database functions for the controller (catsController.js).
 module.exports = burger;
