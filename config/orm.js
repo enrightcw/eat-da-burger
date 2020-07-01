@@ -20,7 +20,6 @@ module.exports = function(table) {
         cb(result);
       })
     },
-    // An example of newRow would be {name: "panther", sleepy: true}
     create: function(newRow, cb) {
 
       connection.query("INSERT INTO ?? SET ?", [table, newRow], function(err, result) {
@@ -29,8 +28,6 @@ module.exports = function(table) {
         cb(result);
       });
     },
-    // An example of updatedObj would be {name: "panther", sleepy: false}
-    // condition in object form: { id: 1 }
     update: function(updatedObj, condition, cb) {
       connection.query("UPDATE ?? SET ? WHERE ?", [table, updatedObj, condition], function(err, result) {
         if (err) throw err;
