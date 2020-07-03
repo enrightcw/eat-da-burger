@@ -1,5 +1,6 @@
 $(document).ready(function() {
     
+  //ajax call for burger creation
   $(".devour-form").on("submit", function(event) {
     event.preventDefault();
 
