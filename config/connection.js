@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
   database: "burgers_db"
 });
 
-if(process.env.JAWSDB_URL){
+if (process.env.JAWSDB_URL){
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 }else {
@@ -18,8 +18,8 @@ if(process.env.JAWSDB_URL){
     user: 'dbk5hjl2qb4nwd1y',
     password: 'xl8i8ghc8d8ov5oq',
     database: 'burgers_db'
-  })
-}
+  });
+};
 
 //connecting to the server
 connection.connect(function(err) {
